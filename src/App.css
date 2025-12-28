@@ -1,0 +1,119 @@
+/* App.css */
+
+/* Smooth theme transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Disable transitions on theme change for instant feedback */
+.theme-transition-disabled * {
+  transition: none !important;
+}
+
+/* Custom scrollbar for dark mode */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-lg;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Smooth color transitions for specific elements */
+.smooth-theme {
+  transition: background-color 200ms ease-in-out, 
+              border-color 200ms ease-in-out, 
+              color 200ms ease-in-out;
+}
+
+/* Focus states that work in both themes */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800;
+}
+
+/* React Grid Layout customizations */
+.react-grid-item {
+  transition: all 200ms ease;
+  transition-property: left, top, width, height;
+}
+
+.react-grid-item.react-grid-placeholder {
+  @apply bg-blue-500 dark:bg-blue-600 opacity-20 rounded-lg;
+}
+
+/* Make resize handle more visible and accessible */
+.react-resizable-handle {
+  z-index: 20 !important;
+  opacity: 0.5;
+  transition: opacity 200ms;
+}
+
+.react-grid-item:hover .react-resizable-handle {
+  opacity: 1;
+}
+
+.react-resizable-handle::after {
+  border-color: #3b82f6 !important; /* Blue color for visibility */
+  border-width: 0 3px 3px 0 !important;
+  width: 10px !important;
+  height: 10px !important;
+  right: 5px !important;
+  bottom: 5px !important;
+}
+
+/* Widget drag handle should allow interaction with buttons */
+.widget-drag-handle {
+  user-select: none;
+}
+
+/* Make sure buttons are NOT part of drag handle */
+.widget-drag-handle ~ * button,
+button {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+/* Widget title should be draggable */
+.widget-drag-handle h3 {
+  cursor: move;
+  user-select: none;
+}
+
+/* Prevent accidental text selection while dragging */
+.react-grid-item.react-draggable-dragging {
+  user-select: none;
+  cursor: move !important;
+}
+
+.react-grid-item.react-draggable-dragging * {
+  pointer-events: none !important;
+}
+
+.react-grid-item.react-draggable-dragging button {
+  pointer-events: none !important;
+}
+
+/* Widget items */
+.widget-item {
+  @apply h-full w-full;
+}
+
+/* Ensure resize handle is visible in edit mode */
+.react-grid-item.cssTransforms {
+  transition-property: transform, width, height;
+}
+
+.react-grid-item > .react-resizable-handle::after {
+  background: transparent;
+}
